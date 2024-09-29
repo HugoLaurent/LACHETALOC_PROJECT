@@ -1,7 +1,9 @@
+import Header from '~/Header/Header'
+
 export default function LayoutUser({ children }: any) {
   return (
     <div>
-      <p>layoutUser</p>
+      <Header />
       <div>{children}</div>
     </div>
   )
