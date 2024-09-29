@@ -1,0 +1,44 @@
+@import '~/css/app.css';
+
+.popular-container {
+  padding: var(--padding-base);
+}
+
+.popular-container__header-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.popular-select {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.popular-select:focus {
+  outline: none;
+  border: none;
+}
+
+.popular-container__time-wrapper {
+  display: flex;
+
+  gap: 3rem;
+}
+
+.popular-time {
+  color: var(--text-light-color);
+  padding-bottom: 0.5rem;
+  transition: box-shadow 0.3s;
+}
+
+.popular-time.active {
+  color: var(--text-color);
+  box-shadow: 0 0.1rem 0 var(--text-light-color);
+}
+
+.popular-time:hover {
+  box-shadow: 0 0.1rem 0 var(--text-light-color);
+}

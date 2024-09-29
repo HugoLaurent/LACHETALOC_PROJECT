@@ -29,6 +29,8 @@
   --font-weight-base: 400;
 
   --border-radius: 0.5rem;
+
+  --padding-base: 1rem 2rem;
 }
 
 * {
@@ -59,4 +61,10 @@ h1 {
   color: var(--text-color);
   font-size: var(--font-size-title);
   font-weight: var(--font-weight-title);
+}
+
+h2 {
+  color: var(--text-color);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-subtitle);
 }
