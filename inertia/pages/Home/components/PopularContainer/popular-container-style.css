@@ -1,7 +1,10 @@
 @import '~/css/app.css';
 
 .popular-container {
+  margin-inline: 2rem;
   padding: var(--padding-base);
+  border-radius: var(--border-radius);
+  background-color: var(--primary-dark-5);
 }
 
 .popular-container__header-wrapper {

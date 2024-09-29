@@ -20,6 +20,8 @@
   --text-light-color: #eee; /* Couleur de texte secondaire */
   --text-dark-color: #333; /* Couleur de texte sombre */
 
+  --background-color-light: #e6e6e7; /* Couleur de fond */
+
   --font-family-base: 'Source Sans Pro', sans-serif;
   --font-size-title: 2.5rem;
   --font-size-subtitle: 1.5rem;
@@ -42,7 +44,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--background-color-light);
 }
 
 h1,
