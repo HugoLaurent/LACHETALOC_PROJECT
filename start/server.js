@@ -1,8 +1,8 @@
-const { Ignitor } = require('@adonisjs/core')
-const https = require('https')
-const pem = require('pem')
+import { Ignitor } from '@adonisjs/core'
+import { createServer } from 'https'
+import { createCertificate } from 'pem'
 
-pem.createCertificate({ days: 1, selfSigned: true }, (error, keys) => {
+createCertificate({ days: 1, selfSigned: true }, (error, keys) => {
   if (error) {
     return console.log(error)
   }
@@ -15,7 +15,7 @@ pem.createCertificate({ days: 1, selfSigned: true }, (error, keys) => {
   new Ignitor(require('@adonisjs/fold'))
     .appRoot(__dirname)
     .fireHttpServer((handler) => {
-      return https.createServer(options, handler)
+      return createServer(options, handler)
     })
     .catch(console.error)
 })
