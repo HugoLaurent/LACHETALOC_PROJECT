@@ -9,6 +9,9 @@ export default class RentalDuration extends BaseModel {
   @column()
   declare duration: string // e.g., short-term, long-term
 
+  @column()
+  declare accommodation_id: number
+
   @hasMany(() => Accommodation)
   declare accommodations: HasMany<typeof Accommodation>
 }

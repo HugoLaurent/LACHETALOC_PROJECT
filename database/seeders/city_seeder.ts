@@ -42,7 +42,6 @@ export default class extends BaseSeeder {
         pays: ['Martinique', 'Guadeloupe', 'La Réunion', 'Guyane', 'Mayotte'].includes(city.region)
           ? 'France (Outre-mer)'
           : 'France',
-        type_ville_id: faker.number.int({ min: 1, max: 3 }),
       })
     }
   }

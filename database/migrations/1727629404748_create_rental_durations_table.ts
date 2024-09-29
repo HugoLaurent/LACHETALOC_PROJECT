@@ -12,7 +12,7 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('accommodations')
         .onDelete('CASCADE')
-      table.string('duree_location')
+      table.string('duration')
     })
   }
 

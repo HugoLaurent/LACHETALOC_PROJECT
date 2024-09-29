@@ -8,35 +8,40 @@ import RentalDuration from './rental_duration.js'
 import CityType from './city_type.js'
 
 export default class Accommodation extends BaseModel {
-  @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare title: string
+  declare city_id: number
+
+  @column()
+  declare user_id: number
+
+  @column()
+  declare type: string
+
+  @column()
+  declare nombre_de_pieces: number
+
+  @column()
+  declare nombre_de_chambres_id: number
+
+  @column()
+  declare titre: string
 
   @column()
   declare description: string
 
   @column()
-  declare address: string
+  declare prix: number
+
+  @column.dateTime()
+  declare date_disponibilite: DateTime
 
   @column()
-  declare cityId: number
+  declare adresse: string
 
   @column()
-  declare numberOfRoomsId: number
-
-  @column()
-  declare rentalDurationId: number
-
-  @column()
-  declare userId: number
-
-  @column()
-  declare facilitiesId: number
-
-  @column()
-  declare isShortTerm: boolean
+  declare image: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

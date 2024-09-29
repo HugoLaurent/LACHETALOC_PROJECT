@@ -8,6 +8,7 @@ export default class extends BaseSeeder {
     for (let i = 0; i < 10; i++) {
       await RentalDuration.create({
         duration: faker.helpers.arrayElement(durationTypes),
+        accommodation_id: faker.number.int({ min: 1, max: 10 }),
       })
     }
   }
