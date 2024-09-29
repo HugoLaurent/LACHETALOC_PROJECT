@@ -1,3 +1,26 @@
+:root {
+  --primary-color: #323232; /* Gris foncé */
+  --primary-light-1: #4d4d4d; /* 1ère nuance claire */
+  --primary-light-2: #666666; /* 2ème nuance claire */
+  --primary-light-3: #808080; /* 3ème nuance claire */
+  --primary-light-4: #999999; /* 4ème nuance claire */
+  --primary-light-5: #b3b3b3; /* 5ème nuance claire */
+
+  --primary-dark-1: #2b2b2b; /* 1ère nuance sombre */
+  --primary-dark-2: #262626; /* 2ème nuance sombre */
+  --primary-dark-3: #1f1f1f; /* 3ème nuance sombre */
+  --primary-dark-4: #191919; /* 4ème nuance sombre */
+  --primary-dark-5: #141414; /* 5ème nuance sombre */
+
+  --icon-color: #3498db; /* Bleu pour les icônes */
+  --error-color: #e74c3c; /* Rouge pour les messages d'erreur */
+  --validation-color: #2ecc71; /* Vert */
+
+  --font-size-base: 16px;
+  --spacing: 8px;
+  --border-radius: 4px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,5 +30,5 @@ html,
 body {
   height: 100%;
   width: 100%;
-  background-color: #323232;
+  background-color: var(--primary-color);
 }
