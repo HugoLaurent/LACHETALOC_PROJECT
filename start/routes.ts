@@ -16,4 +16,4 @@ router.get('/docs', async () => {
 })
 
 // PUBLIC ROUTES
-router.on('/').renderInertia('Home')
+router.on('/').renderInertia('Home/Home').as('home')
