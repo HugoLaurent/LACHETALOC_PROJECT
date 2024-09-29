@@ -18,6 +18,7 @@
 
   --text-color: #fff; /* Couleur de texte principale */
   --text-light-color: #eee; /* Couleur de texte secondaire */
+  --text-dark-color: #333; /* Couleur de texte sombre */
 
   --font-family-base: 'Source Sans Pro', sans-serif;
   --font-size-title: 2.5rem;
@@ -26,6 +27,8 @@
   --font-weight-title: 700;
   --font-weight-subtitle: 600;
   --font-weight-base: 400;
+
+  --border-radius: 0.5rem;
 }
 
 * {
