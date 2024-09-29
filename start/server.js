@@ -1,4 +1,4 @@
-import { Ignitor } from '@adonisjs/ignitor'
+const { Ignitor } = require('@adonisjs/core')
 const https = require('https')
 const pem = require('pem')
 
