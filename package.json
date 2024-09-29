@@ -5,7 +5,7 @@
   "type": "module",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "node ace serve",
+    "start": "node start/server.js",
     "build": "node ace build",
     "dev": "node ace serve --hmr",
     "test": "node ace test",
@@ -69,6 +69,7 @@
     "better-sqlite3": "^11.3.0",
     "edge.js": "^6.0.2",
     "luxon": "^3.5.0",
+    "pem": "^1.14.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reflect-metadata": "^0.2.2"
