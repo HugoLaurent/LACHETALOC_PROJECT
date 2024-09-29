@@ -23,3 +23,7 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.hero__text-title {
+  margin-bottom: 2rem;
+}
