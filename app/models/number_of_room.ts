@@ -1,20 +1,14 @@
-import { DateTime } from 'luxon'
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import Accommodation from './accommodation.js'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
+import { DateTime } from 'luxon'
 
-export default class User extends BaseModel {
+export default class NumberOfRoom extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare fullName: string | null
-
-  @column()
-  declare email: string
-
-  @column({ serializeAs: null })
-  declare password: string
+  declare count: number // e.g., 1, 2, 3, etc.
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
