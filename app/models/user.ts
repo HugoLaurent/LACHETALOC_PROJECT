@@ -8,13 +8,19 @@ export default class User extends BaseModel {
   declare id: number
 
   @column()
-  declare fullName: string | null
+  declare nom: string | null
+
+  @column()
+  declare prenom: string | null
 
   @column()
   declare email: string
 
   @column({ serializeAs: null })
-  declare password: string
+  declare mot_de_passe: string
+
+  @column()
+  declare type_utilisateur_id: number
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

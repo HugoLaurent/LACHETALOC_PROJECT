@@ -1,7 +1,7 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'location_types'
+  protected tableName = 'city_types'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
@@ -12,7 +12,7 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('accommodations')
         .onDelete('CASCADE')
-      table.string('type_location')
+      table.string('type_city')
     })
   }
 

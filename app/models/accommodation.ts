@@ -1,10 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import User from './user.js'
 import City from './city.js'
 import NumberOfRoom from './number_of_room.js'
 import RentalDuration from './rental_duration.js'
+import CityType from './city_type.js'
 
 export default class Accommodation extends BaseModel {
   @column({ isPrimary: true })
@@ -54,4 +55,7 @@ export default class Accommodation extends BaseModel {
 
   @belongsTo(() => RentalDuration)
   declare rentalDuration: BelongsTo<typeof RentalDuration>
+
+  @hasMany(() => CityType)
+  declare cityType: HasMany<typeof CityType>
 }
