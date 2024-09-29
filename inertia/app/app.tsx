@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client'
 import { createInertiaApp } from '@inertiajs/react'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 
-const appName = import.meta.env.APP_NAME || 'LACHE TA LOC'
+const appName = 'LACHE TA LOC'
 
 createInertiaApp({
   progress: { color: '#5468FF' },
