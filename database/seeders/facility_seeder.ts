@@ -1,36 +1,48 @@
-import Facilities from '#models/facility'
+import Facility from '#models/facility'
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
-import { faker } from '@faker-js/faker'
 
 export default class extends BaseSeeder {
   async run() {
-    const nameFacilities = [
-      'Wi-Fi',
-      'Parking',
-      'Piscine',
-      'Salle de sport',
-      'Sécurité',
-      'Jardin',
+    const facilities = [
       'Balcon',
       'Terrasse',
+      'Jardin',
+      'Piscine',
+      'Parking',
+      'Garage',
+      'Ascenseur',
+      'Cave',
+      'Gardien',
+      'Interphone',
+      'Digicode',
+      'Visiophone',
+      'Alarme',
+      'Vidéosurveillance',
       'Climatisation',
-      'Chauffage',
-      'Lave-linge',
-      'Sèche-linge',
-      'Télévision',
-      'Cuisine équipée',
-      'Accès handicapé',
-      'Animaux acceptés',
-      'Service de nettoyage',
-      'Transfert aéroport',
-      'Café',
-      'Petit déjeuner inclus',
+      'Cheminée',
+      'Parquet',
+      'Double vitrage',
+      'Stores électriques',
+      'Stores manuels',
+      'Volets électriques',
+      'Volets manuels',
+      'Porte blindée',
+      'Placards',
+      'Dressing',
+      'Buanderie',
+      'Cellier',
+      'Salle de sport',
+      'Sauna',
+      'Jacuzzi',
+      'Hammam',
+      'Puits',
+      'Forage',
+      'Arrosage automatique',
+      'Barbecue',
     ]
-    for (let i = 0; i < 10; i++) {
-      await Facilities.create({
-        name: faker.helpers.arrayElement(nameFacilities),
-        description: faker.lorem.sentence(),
-      })
+    // Utilisation du modèle pour créer les facilités
+    for (const facility of facilities) {
+      await Facility.create({ name: facility })
     }
   }
 }

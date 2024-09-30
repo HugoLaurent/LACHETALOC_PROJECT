@@ -1,17 +1,16 @@
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
-import type { HasMany } from '@adonisjs/lucid/types/relations'
-import Accommodation from './accommodation.js'
+import { BaseModel, column, manyToMany } from '@adonisjs/lucid/orm'
+import type { ManyToMany } from '@adonisjs/lucid/types/relations'
+import Accommodation from '#models/accommodation'
 
-export default class Facilities extends BaseModel {
+export default class Facility extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
   declare name: string
 
-  @column()
-  declare description: string
-
-  @hasMany(() => Accommodation)
-  declare accommodations: HasMany<typeof Accommodation>
+  @manyToMany(() => Accommodation, {
+    pivotTable: 'accommodation_facilities',
+  })
+  declare accommodations: ManyToMany<typeof Accommodation>
 }

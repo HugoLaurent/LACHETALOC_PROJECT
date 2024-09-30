@@ -1,66 +1,97 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo, hasMany } from '@adonisjs/lucid/orm'
-import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
-import User from './user.js'
-import City from './city.js'
-import NumberOfRoom from './number_of_room.js'
-import RentalDuration from './rental_duration.js'
-import CityType from './city_type.js'
+import { BaseModel, column, belongsTo, manyToMany } from '@adonisjs/lucid/orm'
+import type { BelongsTo, ManyToMany } from '@adonisjs/lucid/types/relations'
+import Neighborhood from '#models/neighborhood'
+import Facility from '#models/facility'
+import City from '#models/city'
+import Duration from '#models/duration'
+import User from '#models/user'
+import Bedroom from '#models/bedroom'
+import Room from '#models/room'
+import Type from '#models/type'
+import Environment from '#models/environment'
 
 export default class Accommodation extends BaseModel {
+  @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare city_id: number
+  declare title: string // Titre de l'annonce
 
   @column()
-  declare user_id: number
+  declare description: string // Description de l'annonce
 
   @column()
-  declare type: string
+  declare price: number // Prix de l'accommodation
 
   @column()
-  declare nombre_de_pieces: number
+  declare surface: number // Surface de l'accommodation
 
   @column()
-  declare nombre_de_chambres_id: number
+  declare floor: number // Étage de l'accommodation
 
   @column()
-  declare titre: string
+  declare address: string // Adresse de l'accommodation
 
   @column()
-  declare description: string
+  declare postalCode: string // Code postal de l'accommodation
 
   @column()
-  declare prix: number
-
-  @column.dateTime()
-  declare date_disponibilite: DateTime
+  declare userId: number // Référence à User
 
   @column()
-  declare adresse: string
+  declare typeId: number // Type d'accommodation (studio, appartement, etc.)
 
   @column()
-  declare image: string
+  declare durationId: number // Durée de location
+
+  @column()
+  declare nmbRoomId: number // Nombre de pièces
+
+  @column()
+  declare nmbBedroomId: number // Nombre de chambres
+
+  @column()
+  declare environmentId: number // Type d'environnement (ville, banlieue, campagne)
+
+  @column()
+  declare neighborhoodId: number // Référence à Neighborhood
+
+  @column()
+  declare cityId: number // Référence à City
+
+  @belongsTo(() => User)
+  declare user: BelongsTo<typeof User>
+
+  @belongsTo(() => Type)
+  declare type: BelongsTo<typeof Type>
+
+  @belongsTo(() => Duration)
+  declare duration: BelongsTo<typeof Duration>
+
+  @belongsTo(() => Room)
+  declare room: BelongsTo<typeof Room>
+
+  @belongsTo(() => Bedroom)
+  declare bedroom: BelongsTo<typeof Bedroom>
+
+  @belongsTo(() => Environment)
+  declare environment: BelongsTo<typeof Environment>
+
+  @belongsTo(() => Neighborhood)
+  declare neighborhood: BelongsTo<typeof Neighborhood>
+
+  @belongsTo(() => City)
+  declare city: BelongsTo<typeof City>
+
+  @manyToMany(() => Facility, {
+    pivotTable: 'accommodation_facility',
+  })
+  declare facilities: ManyToMany<typeof Facility>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime | null
-
-  @belongsTo(() => User)
-  declare user: BelongsTo<typeof User>
-
-  @belongsTo(() => City)
-  declare city: BelongsTo<typeof City>
-
-  @belongsTo(() => NumberOfRoom)
-  declare numberOfRoom: BelongsTo<typeof NumberOfRoom>
-
-  @belongsTo(() => RentalDuration)
-  declare rentalDuration: BelongsTo<typeof RentalDuration>
-
-  @hasMany(() => CityType)
-  declare cityType: HasMany<typeof CityType>
+  declare updatedAt: DateTime
 }

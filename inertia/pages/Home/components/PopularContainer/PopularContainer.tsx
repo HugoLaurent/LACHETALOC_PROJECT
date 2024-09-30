@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './popular-container-style.css'
 import AccommodationCard from '~/components/AccommodationCard/AccommodationCard'
+import { usePage } from '@inertiajs/react'
 
 const cityFrance = [
   { id: 1, name: 'Paris' },
@@ -25,6 +26,8 @@ const optionTime = [
 
 export default function PopularContainer() {
   const [activeTimeId, setActiveTimeId] = useState<number | null>(1)
+  const { usersToSend } = usePage().props
+  console.log(usersToSend)
 
   return (
     <div className="popular-container">
@@ -52,9 +55,10 @@ export default function PopularContainer() {
           ))}
         </div>
         <div className="popular-container__card-wrapper">
-          {Array.from({ length: 6 }, (_, i) => (
-            <AccommodationCard key={i} />
-          ))}
+          {/* {accommodation &&
+            accommodation.map((item: any, index) => (
+              <AccommodationCard key={index} accommodation={item} />
+            ))} */}
         </div>
       </section>
     </div>

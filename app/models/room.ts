@@ -1,9 +1,9 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export default class City extends BaseModel {
+export default class Room extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare city: string
+  declare room: number
 }
