@@ -27,7 +27,6 @@
 
 .popular-container__time-wrapper {
   display: flex;
-
   gap: 3rem;
 }
 
@@ -35,6 +34,7 @@
   color: var(--text-light-color);
   padding-bottom: 0.5rem;
   transition: box-shadow 0.3s;
+  margin-bottom: 2rem;
 }
 
 .popular-time.active {
@@ -44,4 +44,11 @@
 
 .popular-time:hover {
   box-shadow: 0 0.1rem 0 var(--text-light-color);
+}
+
+.popular-container__card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 2rem;
+  justify-items: center;
 }

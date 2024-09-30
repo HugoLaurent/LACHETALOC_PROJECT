@@ -1,0 +1,83 @@
+@import '~/css/app.css';
+
+.accommodation-card__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-light-1);
+}
+
+.accommodation-card__header {
+  position: relative;
+}
+
+.accommodation-card__location,
+.accommodation-card__status {
+  position: absolute;
+  color: var(--text-light-color);
+}
+
+.accommodation-card__location {
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--primary-dark-5);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+}
+
+.accommodation-card__status {
+  bottom: 1rem;
+  right: 1rem;
+  background-color: var(--primary-light-1);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+}
+
+.accommodation-card__image {
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+
+.accommodation-card__content {
+  padding: 1rem 1.5rem 1rem 1.5rem;
+}
+
+.accommodation-card__title {
+  font-size: var(--font-size-subtyitle);
+  font-weight: var(--font-weight-title);
+  margin-bottom: 0.5rem;
+  white-space: balance;
+}
+
+.accommodation-card__description {
+  font-size: var(--font-size-span);
+  color: var(--text-light-color);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.accommodation-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.accommodation-card__price {
+  color: var(--text-color);
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-subtitle);
+}
+
+.accommodation-card__button {
+  color: var(--text-color);
+  background-color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-span);
+  font-weight: var(--font-weight-base);
+  cursor: pointer;
+}

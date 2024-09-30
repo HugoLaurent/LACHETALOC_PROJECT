@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './popular-container-style.css'
+import AccommodationCard from '~/components/AccommodationCard/AccommodationCard'
 
 const cityFrance = [
   { id: 1, name: 'Paris' },
@@ -48,6 +49,11 @@ export default function PopularContainer() {
             >
               {time.name}
             </button>
+          ))}
+        </div>
+        <div className="popular-container__card-wrapper">
+          {Array.from({ length: 6 }, (_, i) => (
+            <AccommodationCard key={i} />
           ))}
         </div>
       </section>
