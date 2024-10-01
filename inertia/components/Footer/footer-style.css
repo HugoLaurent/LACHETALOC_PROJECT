@@ -3,8 +3,7 @@
 .footer-container {
   background-color: var(--primary-dark-1);
   color: var(--text-light-color);
-  margin: var(--margin-base);
-  margin-bottom: 2rem;
+  margin: 2rem 5rem 0;
   border-radius: var(--border-radius);
   padding: 1rem 2rem;
 }
