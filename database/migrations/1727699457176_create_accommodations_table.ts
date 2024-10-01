@@ -9,6 +9,7 @@ export default class extends BaseSchema {
 
       table.string('title').notNullable()
       table.text('description').notNullable()
+      table.date('end_lease').notNullable()
       table.integer('price').notNullable()
       table.integer('surface').notNullable()
       table.integer('floor').notNullable()

@@ -22,6 +22,9 @@ export default class Accommodation extends BaseModel {
   declare description: string // Description de l'annonce
 
   @column()
+  declare endLease: Date // Date
+
+  @column()
   declare price: number // Prix de l'accommodation
 
   @column()

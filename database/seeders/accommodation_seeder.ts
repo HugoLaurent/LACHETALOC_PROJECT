@@ -9,6 +9,9 @@ export default class extends BaseSeeder {
       await Accommodation.create({
         title: faker.lorem.sentence(),
         description: faker.lorem.paragraph(),
+        endLease: DateTime.now()
+          .plus({ days: Math.floor(Math.random() * 30) })
+          .toJSDate(),
         price: faker.number.int({ min: 500, max: 5000 }),
         surface: faker.number.int({ min: 20, max: 200 }),
         floor: faker.number.int({ min: 0, max: 100 }),
