@@ -19,12 +19,12 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  width: 25%;
 }
 
 .footer-contact__input input {
   flex: 1;
   padding: 8px;
-
   border: 1px solid #ccc;
   color: var(--text-dark-color);
   border-radius: var(--border-radius) 0 0 var(--border-radius); /* Coins arrondis uniquement à droite */
@@ -52,10 +52,11 @@
 .footer-contact__social {
   display: flex;
   gap: 1rem;
-  width: 5%;
+  width: 25%;
 }
 
 .footer-contact__social img {
+  width: 30px;
   transition: transform 0.3s;
   cursor: pointer;
 }
