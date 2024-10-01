@@ -7,6 +7,12 @@
   width: 90%;
   border-radius: var(--border-radius);
   background-color: var(--primary-light-1);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.accommodation-card__container:hover {
+  transform: scale(1.05);
 }
 
 .accommodation-card__header {
@@ -56,13 +62,16 @@
 
 .accommodation-card__content {
   padding: 1rem 1.5rem 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
 }
 
 .accommodation-card__title {
   font-size: var(--font-size-subtyitle);
   font-weight: var(--font-weight-title);
   margin-bottom: 0.5rem;
-  white-space: balance;
 }
 
 .accommodation-card__description {

@@ -3,7 +3,7 @@
 .hero {
   position: relative;
   height: 50vh;
-  margin-inline: 2rem;
+  margin: var(--margin-base);
 }
 
 .hero__video {

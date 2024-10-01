@@ -2,23 +2,57 @@ import { useState } from 'react'
 import './popular-container-style.css'
 import AccommodationCard from '~/components/AccommodationCard/AccommodationCard'
 import { usePage } from '@inertiajs/react'
+import {
+  startOfWeek,
+  startOfMonth,
+  startOfQuarter,
+  startOfYear,
+  endOfWeek,
+  endOfMonth,
+  endOfQuarter,
+  endOfYear,
+  isWithinInterval,
+} from 'date-fns'
 
 const optionTime = [
-  { id: 1, name: 'Tout le temps' },
-  { id: 2, name: 'Cette semaine' },
-  { id: 3, name: 'Ce mois-ci' },
-  { id: 4, name: 'Ce trimestre' },
-  { id: 5, name: 'Cette année' },
+  { id: 1, name: 'Tout le temps', range: null },
+  { id: 2, name: 'Cette semaine', range: 'week' },
+  { id: 3, name: 'Ce mois-ci', range: 'month' },
+  { id: 4, name: 'Ce trimestre', range: 'quarter' },
+  { id: 5, name: 'Cette année', range: 'year' },
 ]
+
+// Fonction pour obtenir l'intervalle de temps en fonction de l'option sélectionnée
+const getTimeInterval = (timeRange: string | null) => {
+  const now = new Date()
+  switch (timeRange) {
+    case 'week':
+      return { start: startOfWeek(now), end: endOfWeek(now) }
+    case 'month':
+      return { start: startOfMonth(now), end: endOfMonth(now) }
+    case 'quarter':
+      return { start: startOfQuarter(now), end: endOfQuarter(now) }
+    case 'year':
+      return { start: startOfYear(now), end: endOfYear(now) }
+    default:
+      return null // 'Tout le temps', pas de limite de temps
+  }
+}
 
 export default function PopularContainer() {
   const [activeTimeId, setActiveTimeId] = useState<number | null>(1)
-  const [selectedCity, setSelectedCity] = useState<string>('France') // Valeur par défaut
+  const [selectedCity, setSelectedCity] = useState<string>('France')
   const { accommodations, cities } = usePage<{ accommodations: any[]; cities: any[] }>().props
+  console.log(accommodations)
 
-  // Filtrer les accommodations en fonction de la ville sélectionnée
+  const selectedTimeRange = optionTime.find((time) => time.id === activeTimeId)?.range
+  const timeInterval = getTimeInterval(selectedTimeRange ?? null)
+
   const filteredAccommodations = accommodations.filter((item) => {
-    return selectedCity === 'France' || item.city === selectedCity // Afficher toutes les accommodations si "France" est sélectionnée
+    const endLeaseDate = new Date(item.endLease)
+    const isInTimeRange = !timeInterval || isWithinInterval(endLeaseDate, timeInterval)
+    const isInCity = selectedCity === 'France' || item.city === selectedCity
+    return isInTimeRange && isInCity
   })
 
   return (
@@ -48,7 +82,7 @@ export default function PopularContainer() {
               className={`popular-time ${activeTimeId === time.id ? 'active' : ''}`}
               key={time.id}
               aria-pressed={activeTimeId === time.id}
-              onClick={() => setActiveTimeId(time.id)}
+              onClick={() => setActiveTimeId(time.id)} // Met à jour l'état de l'option temps sélectionnée
             >
               {time.name}
             </button>

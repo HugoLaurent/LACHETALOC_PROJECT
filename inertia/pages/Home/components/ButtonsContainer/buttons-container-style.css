@@ -6,6 +6,6 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 2rem 0;
-  margin-inline: 2rem;
+  margin-inline: 5rem;
   background-color: var(--background-color-light);
 }
