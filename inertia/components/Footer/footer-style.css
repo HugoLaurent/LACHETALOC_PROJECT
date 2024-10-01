@@ -1,0 +1,97 @@
+@import '~/css/app.css';
+
+.footer-container {
+  background-color: var(--primary-dark-1);
+  color: var(--text-light-color);
+  margin: var(--margin-base);
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  padding: 1rem 2rem;
+}
+
+.footer-top-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-contact__input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.footer-contact__input input {
+  flex: 1;
+  padding: 8px;
+
+  border: 1px solid #ccc;
+  color: var(--text-dark-color);
+  border-radius: var(--border-radius) 0 0 var(--border-radius); /* Coins arrondis uniquement à droite */
+}
+
+.footer-contact__input input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.footer-contact__input button {
+  padding: 8px 12px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0; /* Coins arrondis uniquement à droite */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.footer-contact__input buuton:hover {
+  background-color: var(--primary-light-1);
+}
+
+.footer-contact__social {
+  display: flex;
+  gap: 1rem;
+  width: 5%;
+}
+
+.footer-contact__social img {
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.footer-contact__social img:hover {
+  transform: scale(1.1);
+}
+
+.footer-lists {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  width: 100%;
+}
+
+.footer-contact h3,
+.footer-lists h3 {
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-subtitle);
+  margin-bottom: 1rem;
+}
+
+.footer-lists li {
+  list-style: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  margin-bottom: 0.5rem;
+  width: fit-content;
+}
+
+.footer-lists li:hover {
+  box-shadow: 0 0.1rem 0 var(--text-light-color);
+}
+
+hr {
+  border: 1px solid var(--text-light-color);
+  width: 100%;
+  margin: 1rem 0;
+}

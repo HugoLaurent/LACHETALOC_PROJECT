@@ -7,6 +7,10 @@ import maisonIcon from './maison.png'
 import studioIcon from './studio.png'
 import timeIcon from './time.png'
 
+import fb from './facebook.png'
+import lk from './linkedin.png'
+import ins from './instagram.png'
+
 export {
   appartementIcon,
   banlieuIcon,
@@ -16,4 +20,7 @@ export {
   maisonIcon,
   studioIcon,
   timeIcon,
+  fb,
+  lk,
+  ins,
 }
