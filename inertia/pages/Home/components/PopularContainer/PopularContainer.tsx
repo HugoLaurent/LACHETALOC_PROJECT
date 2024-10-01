@@ -3,19 +3,6 @@ import './popular-container-style.css'
 import AccommodationCard from '~/components/AccommodationCard/AccommodationCard'
 import { usePage } from '@inertiajs/react'
 
-const cityFrance = [
-  { id: 1, name: 'Paris' },
-  { id: 2, name: 'Marseille' },
-  { id: 3, name: 'Lyon' },
-  { id: 4, name: 'Toulouse' },
-  { id: 5, name: 'Nice' },
-  { id: 6, name: 'Nantes' },
-  { id: 7, name: 'Strasbourg' },
-  { id: 8, name: 'Montpellier' },
-  { id: 9, name: 'Bordeaux' },
-  { id: 10, name: 'Lille' },
-]
-
 const optionTime = [
   { id: 1, name: 'Tout le temps' },
   { id: 2, name: 'Cette semaine' },
@@ -26,17 +13,30 @@ const optionTime = [
 
 export default function PopularContainer() {
   const [activeTimeId, setActiveTimeId] = useState<number | null>(1)
-  const { usersToSend } = usePage().props
-  console.log(usersToSend)
+  const [selectedCity, setSelectedCity] = useState<string>('France') // Valeur par défaut
+  const { accommodations, cities } = usePage<{ accommodations: any[]; cities: any[] }>().props
+
+  // Filtrer les accommodations en fonction de la ville sélectionnée
+  const filteredAccommodations = accommodations.filter((item) => {
+    return selectedCity === 'France' || item.city === selectedCity // Afficher toutes les accommodations si "France" est sélectionnée
+  })
 
   return (
     <div className="popular-container">
       <section className="popular-container__header-wrapper">
         <h2 className="popular-title">Popular in</h2>
-        <select className="popular-select" name="city-choices" id="city-choices">
-          {cityFrance.map((city) => (
-            <option className="popular-option" key={city.id} value={city.id}>
-              {city.name}
+        <select
+          className="popular-select"
+          name="city-choices"
+          id="city-choices"
+          onChange={(e) => setSelectedCity(e.target.value)} // Met à jour l'état de la ville sélectionnée
+        >
+          <option className="popular-option" value="France">
+            France
+          </option>
+          {cities.map((city) => (
+            <option className="popular-option" key={city.id} value={city.city}>
+              {city.city}
             </option>
           ))}
         </select>
@@ -55,10 +55,9 @@ export default function PopularContainer() {
           ))}
         </div>
         <div className="popular-container__card-wrapper">
-          {/* {accommodation &&
-            accommodation.map((item: any, index) => (
-              <AccommodationCard key={index} accommodation={item} />
-            ))} */}
+          {filteredAccommodations.map((item: any, index: number) => (
+            <AccommodationCard key={index} accommodation={item} />
+          ))}
         </div>
       </section>
     </div>

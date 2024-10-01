@@ -20,6 +20,11 @@
   font-size: 1.5rem;
 }
 
+.popular-option {
+  color: var(--text-color);
+  background-color: var(--primary-dark-5);
+}
+
 .popular-select:focus {
   outline: none;
   border: none;

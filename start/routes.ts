@@ -1,8 +1,7 @@
 import router from '@adonisjs/core/services/router'
 import AutoSwagger from 'adonis-autoswagger'
 import swagger from '#config/swagger'
-// const AccommodationsController = () => import('#controllers/accommodations_controller')
-const UsersController = () => import('#controllers/user_controller')
+const AccommodationsController = () => import('#controllers/accommodations_controller')
 
 // Returns swagger in YAML with the custom route `/` included
 router.get('/swagger', async () => {
@@ -18,4 +17,4 @@ router.get('/docs', async () => {
 })
 
 // PUBLIC ROUTES
-router.get('/', [UsersController, 'getAllUsers'])
+router.get('/', [AccommodationsController, 'getAllAccommodations'])
