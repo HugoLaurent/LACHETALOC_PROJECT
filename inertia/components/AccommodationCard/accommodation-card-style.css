@@ -9,6 +9,24 @@
   background-color: var(--primary-light-1);
   transition: transform 0.3s;
   cursor: pointer;
+  view-timeline-name: --revealing-image;
+  view-timeline-axis: block;
+
+  /* Attach animation, linked to the  View Timeline */
+  animation: linear reveal both;
+  animation-timeline: --revealing-image;
+
+  /* Tweak range when effect should run*/
+  animation-range: entry 25% cover 50%;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .accommodation-card__container:hover {
