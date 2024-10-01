@@ -37,6 +37,9 @@ export default class Accommodation extends BaseModel {
   declare postalCode: string // Code postal de l'accommodation
 
   @column()
+  declare image: string // Image de l'accommodation
+
+  @column()
   declare userId: number // Référence à User
 
   @column()
@@ -46,16 +49,13 @@ export default class Accommodation extends BaseModel {
   declare durationId: number // Durée de location
 
   @column()
-  declare nmbRoomId: number // Nombre de pièces
+  declare roomId: number // Nombre de pièces
 
   @column()
-  declare nmbBedroomId: number // Nombre de chambres
+  declare bedroomId: number // Nombre de chambres
 
   @column()
   declare environmentId: number // Type d'environnement (ville, banlieue, campagne)
-
-  @column()
-  declare neighborhoodId: number // Référence à Neighborhood
 
   @column()
   declare cityId: number // Référence à City
@@ -78,16 +78,18 @@ export default class Accommodation extends BaseModel {
   @belongsTo(() => Environment)
   declare environment: BelongsTo<typeof Environment>
 
-  @belongsTo(() => Neighborhood)
-  declare neighborhood: BelongsTo<typeof Neighborhood>
-
   @belongsTo(() => City)
   declare city: BelongsTo<typeof City>
 
   @manyToMany(() => Facility, {
-    pivotTable: 'accommodation_facility',
+    pivotTable: 'accommodation_facilities',
   })
   declare facilities: ManyToMany<typeof Facility>
+
+  @manyToMany(() => Neighborhood, {
+    pivotTable: 'accommodation_neighborhoods',
+  })
+  declare neighborhoods: ManyToMany<typeof Neighborhood>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

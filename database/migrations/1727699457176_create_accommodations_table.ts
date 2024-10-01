@@ -14,13 +14,13 @@ export default class extends BaseSchema {
       table.integer('floor').notNullable()
       table.string('address').notNullable()
       table.string('postal_code').notNullable()
+      table.string('image').notNullable()
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('SET NULL') // Met user_id à NULL si l'utilisateur est supprimé
       table.integer('type_id').unsigned().references('id').inTable('types')
       table.integer('duration_id').unsigned().references('id').inTable('durations')
-      table.integer('nmb_room_id').unsigned().references('id').inTable('rooms')
-      table.integer('nmb_bedroom_id').unsigned().references('id').inTable('bedrooms')
+      table.integer('room_id').unsigned().references('id').inTable('rooms')
+      table.integer('bedroom_id').unsigned().references('id').inTable('bedrooms')
       table.integer('environment_id').unsigned().references('id').inTable('environments')
-      table.integer('neighborhood_id').unsigned().references('id').inTable('neighborhoods')
       table.integer('city_id').unsigned().references('id').inTable('cities')
 
       table.timestamp('created_at')

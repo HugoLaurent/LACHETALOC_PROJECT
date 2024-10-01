@@ -10,7 +10,7 @@ export default class Facility extends BaseModel {
   declare name: string
 
   @manyToMany(() => Accommodation, {
-    pivotTable: 'accommodation_facilities',
+    pivotTable: 'accommodation_facility',
   })
   declare accommodations: ManyToMany<typeof Accommodation>
 }
