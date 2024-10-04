@@ -57,6 +57,15 @@ export default function PopularContainer() {
 
   return (
     <div className="popular-container">
+      {/* {accommodations && (
+        <section>
+          <div className="popular-container__card-wrapper">
+            {accommodations.map((item: any, index: number) => (
+              <AccommodationCard key={index} accommodation={item} />
+            ))}
+          </div>
+        </section>
+      )} */}
       <section className="popular-container__header-wrapper">
         <h2 className="popular-title">Popular in</h2>
         <select

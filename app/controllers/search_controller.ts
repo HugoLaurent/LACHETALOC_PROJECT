@@ -2,18 +2,22 @@ import Accommodation from '#models/accommodation'
 import City from '#models/city'
 import type { HttpContext } from '@adonisjs/core/http'
 
-// DEFINE THE HOME CONTROLLER CLASS
-export default class HomeController {
-  // ASYNC METHOD TO GET ALL DATA FOR THE HOME PAGE
-  async getAllDatas({ inertia }: HttpContext) {
-    // QUERY ALL ACCOMMODATIONS AND PRELOAD RELATED CITY DATA
-    const accommodations = await Accommodation.query().preload('city').exec()
+export default class SearchController {
+  async search({ inertia, request }: HttpContext) {
+    console.log('coucou')
 
-    // FETCH ALL CITIES FROM THE DATABASE
-    const cities = await City.all()
-    // SORT CITIES ALPHABETICALLY BY CITY NAME
-    const citiesSorted = cities.sort((a, b) => a.city.localeCompare(b.city))
+    const query = request.input('query')
 
+    const cities = await City.query().where('city', 'LIKE', `%${query}%`).exec()
+    console.log(cities)
+
+    console.log(typeof cities[0].id)
+
+    // Utilisez .where pour rechercher sur le champ title, description, ou tout autre champ pertinent
+    const accommodations = await Accommodation.query()
+      .where('city_id', +cities[0].id) // Utiliser city_id pour filtrer les accommodations
+      .preload('city') // Assurez-vous que la relation est définie dans votre modèle Accommodation
+      .exec()
     // CHECK IF THERE ARE ANY ACCOMMODATIONS
     if (accommodations.length > 0) {
       // FORMAT ACCOMMODATIONS FOR THE RESPONSE
@@ -23,18 +27,12 @@ export default class HomeController {
       // RENDER THE HOME VIEW WITH ACCOMMODATIONS AND CITIES
       return inertia.render('Home/Home', {
         accommodations: formattedAccommodations,
-        cities: citiesSorted,
+        cities: cities,
       })
     }
     // RENDER THE HOME VIEW WITH AN EMPTY ACCOMMODATIONS ARRAY IF NONE FOUND
     return inertia.render('Home/Home', { accommodations: [] })
   }
-
-  /**
-   * STATIC METHOD TO FORMAT ACCOMMODATION DATA
-   * @param {Accommodation} accommodation - The accommodation object to format.
-   * @returns {Object} - The formatted accommodation data.
-   */
   formatAccommodation(accommodation: Accommodation): object {
     return {
       id: accommodation.id, // ACCOMMODATION ID
@@ -45,20 +43,6 @@ export default class HomeController {
       image: accommodation.image, // IMAGE URL OF THE ACCOMMODATION
       price: accommodation.price, // PRICE OF THE ACCOMMODATION
       title: accommodation.title, // TITLE OF THE ACCOMMODATION
-    }
-  }
-
-  async getDatasApi({ response }: HttpContext) {
-    // QUERY ALL ACCOMMODATIONS AND PRELOAD RELATED CITY DATA
-    const accommodations = await City.all()
-    try {
-      if (accommodations) {
-        return response.status(201).json(accommodations)
-      }
-
-      return response.status(404).json({ message: 'No accommodations found' })
-    } catch (error) {
-      return response.status(500).json({ message: error.message })
     }
   }
 }
